@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="Estimasi jarak monokular dengan YOLOv8: bingkai deteksi berlabel Jarak 29 cm, fokus 401.739 piksel">
+  <defs>
+    <clipPath id="page"><rect width="1200" height="400" rx="18"/></clipPath>
+    <style>
+      .mono  { font-family: "Courier New", Courier, monospace; }
+      .sans  { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+      .kick  { font-size: 11px; letter-spacing: 3.5px; fill: #4ade80; }
+      .t1    { font-size: 58px; font-weight: 800; letter-spacing: -1px; fill: #f2f5f3; }
+      .t2    { font-size: 44px; font-weight: 800; letter-spacing: -0.5px; fill: #f2f5f3; }
+      .formula{ font-size: 19px; fill: #4ade80; letter-spacing: 1px; }
+      .sub   { font-size: 16px; fill: #9aa5a0; }
+      .meta  { font-size: 12px; letter-spacing: 3px; fill: #7d8a84; }
+      .chip  { font-size: 13px; font-weight: 700; fill: #0f1311; }
+      .under { font-size: 12px; fill: #9aa5a0; letter-spacing: 0.5px; }
+      .dim   { font-size: 12px; fill: #4ade80; letter-spacing: 0.5px; }
+      .read  { font-size: 11px; letter-spacing: 1.5px; fill: #7d8a84; }
+    </style>
+  </defs>
+
+  <g clip-path="url(#page)">
+    <rect width="1200" height="400" fill="#0f1311"/>
+    <g fill="none" stroke-linecap="round">
+      <path d="M71 75 h8 M75 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M71 150 h8 M75 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M71 225 h8 M75 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M71 300 h8 M75 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M71 375 h8 M75 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M146 75 h8 M150 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M146 150 h8 M150 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M146 225 h8 M150 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M146 300 h8 M150 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M146 375 h8 M150 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M221 75 h8 M225 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M221 150 h8 M225 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M221 225 h8 M225 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M221 300 h8 M225 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M221 375 h8 M225 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M296 75 h8 M300 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M296 150 h8 M300 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M296 225 h8 M300 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M296 300 h8 M300 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M296 375 h8 M300 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M371 75 h8 M375 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M371 150 h8 M375 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M371 225 h8 M375 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M371 300 h8 M375 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M371 375 h8 M375 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M446 75 h8 M450 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M446 150 h8 M450 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M446 225 h8 M450 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M446 300 h8 M450 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M446 375 h8 M450 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M521 75 h8 M525 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M521 150 h8 M525 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M521 225 h8 M525 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M521 300 h8 M525 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M521 375 h8 M525 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M596 75 h8 M600 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M596 150 h8 M600 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M596 225 h8 M600 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M596 300 h8 M600 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M596 375 h8 M600 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M671 75 h8 M675 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M671 150 h8 M675 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M671 225 h8 M675 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M671 300 h8 M675 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M671 375 h8 M675 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M746 75 h8 M750 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M746 150 h8 M750 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M746 225 h8 M750 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M746 300 h8 M750 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M746 375 h8 M750 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M821 75 h8 M825 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M821 150 h8 M825 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M821 225 h8 M825 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M821 300 h8 M825 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M821 375 h8 M825 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M896 75 h8 M900 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M896 150 h8 M900 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M896 225 h8 M900 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M896 300 h8 M900 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M896 375 h8 M900 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M971 75 h8 M975 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M971 150 h8 M975 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M971 225 h8 M975 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M971 300 h8 M975 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M971 375 h8 M975 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1046 75 h8 M1050 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1046 150 h8 M1050 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1046 225 h8 M1050 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1046 300 h8 M1050 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1046 375 h8 M1050 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1121 75 h8 M1125 71 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1121 150 h8 M1125 146 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1121 225 h8 M1125 221 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1121 300 h8 M1125 296 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    <path d="M1121 375 h8 M1125 371 v8" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.4"/>
+    </g>
+
+    <!-- viewfinder brackets -->
+    <g stroke="#4ade80" stroke-width="3" fill="none" stroke-linecap="square">
+      <path d="M24 68 V24 H68"/>
+      <path d="M1132 24 H1176 V68"/>
+      <path d="M1176 332 V376 H1132"/>
+      <path d="M68 376 H24 V332"/>
+    </g>
+
+    <!-- left: title block -->
+    <text class="mono kick" x="64" y="62">CAM0 &#183; V4L2 &#183; 640 &#215; 640 &#183; ONNX</text>
+    <text class="sans t1" x="62" y="136">MONOCULAR</text>
+    <text class="sans t2" x="62" y="190">DISTANCE ESTIMATION</text>
+    <rect x="64" y="210" width="96" height="4" fill="#4ade80"/>
+    <text class="mono formula" x="64" y="256">d = (H &#215; f) / h</text>
+    <text class="sans sub" x="64" y="294">Estimasi jarak objek dari satu kamera laptop, real time.</text>
+    <text class="mono meta" x="64" y="354">BIMA ADJI KUSUMA &#183; YOLOV8 + OPENCV</text>
+
+    <!-- right: detection HUD -->
+    <rect x="770" y="110" width="280" height="170" fill="none" stroke="#4ade80" stroke-width="2.5"/>
+    <rect x="770" y="80" width="132" height="26" fill="#4ade80"/>
+    <text class="mono chip" x="780" y="98">Jarak: 29 cm</text>
+
+    <!-- dimension line -->
+    <g stroke="#4ade80" stroke-width="1.5" fill="none">
+      <line x1="1075" y1="110" x2="1075" y2="280"/>
+      <line x1="1068" y1="110" x2="1082" y2="110"/>
+      <line x1="1068" y1="280" x2="1082" y2="280"/>
+    </g>
+    <text class="mono dim" x="1090" y="199">310 px</text>
+
+    <text class="mono under" x="770" y="304">hp &#183; conf 0.87</text>
+    <text class="mono read" x="1136" y="354" text-anchor="end">f = 401.739 px &#183; focal.txt</text>
+  </g>
+
+  <rect x="0.5" y="0.5" width="1199" height="399" rx="17.5" fill="none" stroke="#2a322e"/>
+</svg>

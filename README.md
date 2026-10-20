@@ -1,143 +1,138 @@
-# YOLO-Based Monocular Distance Estimation with Webcam
+<p align="center">
+  <img src="assets/hero.svg" alt="Estimasi jarak monokular dengan YOLOv8: bingkai deteksi berlabel jarak" width="100%">
+</p>
 
-This project uses **YOLO object detection** and a **single (monocular) camera**—such as a built-in laptop webcam—to estimate the distance between the camera and a detected object in real time.
+<p align="center"><b>Estimasi jarak objek dari satu kamera, tanpa sensor kedalaman.</b></p>
+<p align="center">YOLOv8 mendeteksi objek lewat ONNX, tinggi bounding box dipakai pada model pinhole, hasilnya tampil sebagai label jarak di frame.</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/C%2B%2B-17-00599C?logo=cplusplus&logoColor=white" alt="C++17">
+  <img src="https://img.shields.io/badge/OpenCV-4-5C3EE8?logo=opencv&logoColor=white" alt="OpenCV 4">
+  <img src="https://img.shields.io/badge/CUDA-12.2-76B900?logo=nvidia&logoColor=white" alt="CUDA 12.2">
+  <img src="https://img.shields.io/badge/YOLOv8-ONNX-2b2b2b" alt="YOLOv8 ONNX">
+</p>
+
+<p align="center">
+  <a href="#fitur">Fitur</a> ·
+  <a href="#cara-kerja">Cara kerja</a> ·
+  <a href="#prasyarat">Prasyarat</a> ·
+  <a href="#build-dan-jalankan">Build</a> ·
+  <a href="#kalibrasi">Kalibrasi</a> ·
+  <a href="#konfigurasi">Konfigurasi</a> ·
+  <a href="#kontributor">Kontributor</a>
+</p>
 
 ---
 
-## Features
+## Fitur
 
--  Real-time object detection with YOLO (ONNX model)
--  Distance estimation based on object size in pixels
--  Simple one-time calibration using a known object distance
--  Works with laptop webcams (V4L2 compatible)
--  Automatic saving of calibration (`focal.txt`)
--  Optional logging to CSV for analysis/plotting
-
----
-
-## Prerequisites
-
-- OpenCV 4.x with CUDA 12 support (optional but recommended)
-- ONNX Runtime
-- C++17 compiler (e.g., `g++`, `clang++`)
-- Webcam (USB or built-in)
+- Deteksi objek YOLOv8 dari model ONNX 640×640 lewat modul `dnn` OpenCV
+- Estimasi jarak real time untuk deteksi dengan confidence tertinggi
+- Kalibrasi sekali tekan: tekan `c`, masukkan jarak asli objek, focal length disimpan ke `focal.txt`
+- Label jarak dan penghitung FPS langsung di jendela OpenCV
+- Log CSV dengan kolom `timestamp_ms`, `pixel_height`, `estimated_distance_cm`, `confidence`
+- Backend CUDA bisa dimatikan lewat `runOnGPU` di `main.cpp`
 
 ---
 
-## Building the Application
+## Cara kerja
 
-1. Make sure you have the prerequisites installed
-2. Create a build directory and navigate to it:
+Perhitungannya memakai model pinhole:
+
+```
+d = (H × f) / h
+```
+
+`d` jarak objek ke kamera (cm), `H` tinggi asli objek (cm), `f` focal length hasil kalibrasi (px), `h` tinggi bounding box (px).
+
+`H` diisi manual lewat `REAL_HEIGHT_CM` di `main.cpp`, sekarang `23.0f`. `h` diambil dari tinggi box YOLO. `f` dibaca dari `focal.txt`, nilai terakhir `401.739` px.
+
+Program hanya mengukur satu objek: deteksi dengan confidence tertinggi di frame itu.
+
+---
+
+## Prasyarat
+
+- Linux dengan webcam, karena kode membuka kamera lewat `CAP_V4L2`
+- OpenCV 4 dengan modul `dnn`
+- CUDA 12.2 di `/usr/local/cuda-12.2`, karena `CMakeLists.txt` memakai `find_package(CUDA 12 REQUIRED)`
+- CMake 3.5 atau lebih baru dan compiler C++17
+
+---
+
+## Build dan jalankan
 
 ```bash
 mkdir build
 cd build
-```
-
-3. Run CMake and build:
-
-```bash
 cmake ..
 make
-```
-
----
-
-## Running the Application
-
-From the build directory, run:
-
-```bash
 ./inferenceTest
 ```
 
----
-
-## How It Works
-
-This program uses the pinhole camera model for monocular distance estimation.
-
-**Formula:**
-
-```
-Distance (cm) = (Real Object Height (cm) × Focal Length (px)) / Object Height in Image (px)
-```
-
-- **Real Object Height (cm)**: Must be manually defined in the code based on the object you are detecting.
-- **Object Height in Image (px)**: Automatically computed using the height of the bounding box detected by YOLO.
-- **Focal Length (px)**: Estimated during calibration and saved to `focal.txt`.
+Jendela `Estimasi Jarak YOLO` akan terbuka. Tekan `c` untuk kalibrasi, `ESC` untuk keluar.
 
 ---
 
-## Calibration Guide
+## Kalibrasi
 
-You need to calibrate the camera once for each object type or detection setup.
+1. Ukur tinggi objek sebenarnya, lalu samakan `REAL_HEIGHT_CM` di `main.cpp`
+2. Letakkan objek di jarak yang diketahui, misalnya 50 cm
+3. Jalankan program sampai objek masuk bounding box
+4. Tekan `c`, masukkan jarak tersebut dalam cm
+5. `focal.txt` terisi otomatis
 
-### Steps:
-
-1. **Prepare an object** with known height (e.g., a phone = 15 cm, or a human face = 23 cm).
-2. **Update the constant** in `main.cpp`:
-
-   ```cpp
-   const float REAL_HEIGHT_CM = 15.0f; // Set to your object's real height
-   ```
-
-3. **Place the object** in front of the camera at a known distance (e.g., 50 cm).
-4. **Run the program**. Ensure the object is detected (bounding box visible).
-5. **Press the `c` key** in the OpenCV window.
-6. **Enter the real distance** in cm when prompted (e.g., `50`).
-
-The system will calculate the focal length and store it in `focal.txt`. You only need to do this once unless your camera or object changes.
+Kalibrasi ulang hanya perlu kalau kamera atau jenis objeknya berganti.
 
 ---
 
-## Customization
+## Konfigurasi
 
-### Change Object Type (e.g., Phone, Face, Bottle)
+`main.cpp` memakai path absolut `/home/bima/Monocular Distance Estimation/` untuk model, file kelas, `focal.txt`, dan `distance_log.csv`. Ganti ke path repo di mesin kamu sebelum build.
 
-Update this line in your code:
-
-```cpp
-const float REAL_HEIGHT_CM = 15.0f; // Example: phone
-```
-
-> Use a height that matches your object in the real world, in centimeters.
-
-### Change Detection Model
-
-Make sure to update your model path in:
-
-```cpp
-Inference inf("your_model.onnx", Size(640, 640), "classes.txt", true);
-```
-
-Ensure your YOLO model is trained to detect the object you are trying to measure.
+| Yang diubah | Lokasi |
+|-------------|--------|
+| Path model, classes, focal, log | `main.cpp`, konstruktor `Inference` dan blok `ifstream`/`ofstream` |
+| Tinggi objek sebenarnya | `REAL_HEIGHT_CM` |
+| GPU atau CPU | `runOnGPU` |
+| Resolusi, FPS, format kamera | `cap.set(...)`, sekarang 800×600, MJPG, 60 fps |
+| Path CUDA | `CMakeLists.txt` |
+| Model dan daftar kelas | `best.onnx`, `classes.txt` (satu kelas: `hp`) |
 
 ---
 
-## Notes
+## Isi repo
 
-- Calibration is needed only once unless the camera or object type changes.
-- Ensure the whole object fits inside the frame during detection.
-- The camera must remain stationary during usage.
+| File | Isi |
+|------|-----|
+| `main.cpp` | Loop kamera, kalibrasi, perhitungan jarak, overlay jarak dan FPS |
+| `inference.cpp`, `inference.h` | Wrapper OpenCV dnn: decode YOLOv5/v8, NMS, input diubah ke kotak 640×640 |
+| `best.onnx` | Model YOLOv8, input 640×640 |
+| `classes.txt` | Nama kelas model, sekarang `hp` |
+| `focal.txt` | Focal length hasil kalibrasi |
+| `distance_log.csv` | Contoh log hasil pengukuran |
+| `CMakeLists.txt` | Konfigurasi build |
+
+---
+
+## Catatan
+
+- Objek harus utuh di dalam frame, dan kamera sebaiknya diam saat pengukuran
+- Ketelitian bergantung pada kestabilan bounding box, karena hanya tinggi box yang dipakai
+- Log ditulis ulang setiap program dijalankan
 
 ---
 
-## Contributor
+## Ide pengembangan
 
-**Bima Adji Kusuma**  
- bimaadjikusuma@gmail.com
-
----
-
-## Further Development Ideas
-
-You can expand this project with:
-
--  Multi-object tracking with individual distance estimation
--  Real-time distance plotting
--  Calibration profiles per object type
--  GUI using Qt or ImGui
--  3D pose estimation from bounding boxes
+- Multi-object tracking dengan jarak per objek
+- Grafik jarak real time
+- Profil kalibrasi untuk tiap jenis objek
+- GUI dengan Qt atau ImGui
+- Estimasi pose 3D dari bounding box
 
 ---
+
+## Kontributor
+
+Bima Adji Kusuma, [bimaadjikusuma@gmail.com](mailto:bimaadjikusuma@gmail.com)
