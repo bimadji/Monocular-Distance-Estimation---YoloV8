@@ -1,3 +1,0 @@
-/home/bima/Monocular Distance Estimation/build/CMakeFiles/inferenceTest.dir
-/home/bima/Monocular Distance Estimation/build/CMakeFiles/edit_cache.dir
-/home/bima/Monocular Distance Estimation/build/CMakeFiles/rebuild_cache.dir
